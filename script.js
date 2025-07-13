@@ -1,17 +1,22 @@
-// AUTOMATION
-let headlines = require("./finalData.js");
-  
+fetch('./finalData.json')
+  .then(response => response.json())
+  .then((headlines) => {
+    // Your rendering code here using `headlines`
+    for (let i = 0; i < 3; i++) {
+      let ETdiv = `<ul><li><div class = "headline">${headlines["ET"][i]}</div></li></ul>`;
+      let Hindudiv = `<ul><li><div class = "headline">${headlines["Hindu"][i]}</div></li></ul>`;
+      let HTdiv = `<ul><li><div class = "headline">${headlines["HT"][i]}</div></li></ul>`;
+      let TOIdiv = `<ul><li><div class = "headline">${headlines["TOI"][i]}</div></li></ul>`;
+      $(".ETnews .lower").append(ETdiv);
+      $(".THnews .lower").append(Hindudiv);
+      $(".HTnews .lower").append(HTdiv);
+      $(".TOInews .lower").append(TOIdiv);
+    }
 
-for(let i=0 ; i<3 ; i++){
-    let ETdiv = `<ul><li><div class = "headline">${headlines["ET"][i]}</div></li><ul>`;
-    let Hindudiv = `<ul><li><div class = "headline">${headlines["Hindu"][i]}</div></li></ul>`;
-    let HTdiv = `<ul><li><div class = "headline">${headlines["HT"][i]}</div></li></ul>`;
-    let TOIdiv = `<ul><li><div class = "headline">${headlines["TOI"][i]}</div></li></ul>`;
-    $(".ETnews .lower").append(ETdiv);
-    $(".THnews .lower").append(Hindudiv);
-    $(".HTnews .lower").append(HTdiv);
-    $(".TOInews .lower").append(TOIdiv);
-}
+    // Also move the click handlers inside this `.then()` block
+    // so `headlines` is available
+  });
+
 
 $(".news").click(function(e) {
     if($(this).hasClass("ETnews")){
