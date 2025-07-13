@@ -1,0 +1,15 @@
+{
+  "name": "newsmania-app",
+  "version": "1.0.0",
+  "description": "NewsMania scrapes top headlines from Indian newspapers and displays them in a dynamic UI.",
+  "main": "finalData.js",
+  "scripts": {
+    "start": "node temp.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^9.1.1"
+  }
+}
